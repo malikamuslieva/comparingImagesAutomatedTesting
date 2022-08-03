@@ -23,52 +23,52 @@ public class HomePage {
 
     // refactor by adding the following method: public HomePage locateAnImage(){}
 
-    public HomePage captureScreenshotOfImage() throws IOException {
 
+    public File magazinImageFile() {
         // scroll the image I want to capture a Screenshot of  into view
         WebElement pictureToValidate = driver.findElement(picture);
         js.executeScript("arguments[0].scrollIntoView();", pictureToValidate);
 
-        // wrap it with an if-else statement
-        // take a screenshot and save as a file
-        File src = pictureToValidate.getScreenshotAs(OutputType.FILE);
-        // i can refactor by returning the file src
+        // wrap it with an if-else statement - take a screenshot and save as a file
+        File srcImageFile = pictureToValidate.getScreenshotAs(OutputType.FILE);
         // create new Target location
-        File target = new File(".\\screenshots\\magazin.png");
 
+        return srcImageFile;
+
+    }
+
+    public HomePage captureScreenshotOfImage() throws IOException {
+
+        File srcImageFile = magazinImageFile();
+        File target = new File(".\\screenshots\\magazin.png");
         //copy the screenshot to my target location
-        FileUtils.copyFile(src, target);
+        FileUtils.copyFile(srcImageFile, target);
         return this;
     }
 
-    public HomePage validatingCapturedScreenshot() throws IOException {
+    public Boolean validatingCapturedScreenshotUsingAShot() throws IOException {
 
         // read the expected image and save in the BufferedImage object
         BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
 
-        WebElement pictureToValidate = driver.findElement(picture);
-        js.executeScript("arguments[0].scrollIntoView();", pictureToValidate);
-
-        File src = pictureToValidate.getScreenshotAs(OutputType.FILE);
-        // create new Target location
-        File target = new File(".\\screenshots\\magazinSecondScreenshot.png");
-        //copy the screenshot to my target location
-        FileUtils.copyFile(src, target);
-
-        // read the actualScreenshot
-        BufferedImage actualImage = ImageIO.read(target);
+        // now take screenshot of the current Image
+        File srcImageFile = magazinImageFile();
+        BufferedImage actualImage = ImageIO.read(srcImageFile);
 
         // compare those two images
         ImageDiffer imgDiff = new ImageDiffer();
         ImageDiff diff = imgDiff.makeDiff(expectedImage, actualImage);
 
         // if those images have a difference
-        if(diff.hasDiff()){
-            System.out.println("Failed! Images are not same!");
-        }else {
-            System.out.println("Passed. Images are same");
+        if (diff.hasDiff()) {
+            return false;
+        } else {
+            return true;
         }
-        return this;
     }
 
+    public Boolean validatingCapturedScreenshotUsingApplitools(){
+
+        return true;
+    }
 }
