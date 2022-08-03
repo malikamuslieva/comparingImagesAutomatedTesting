@@ -56,11 +56,21 @@
             <version>5.2.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
+        <!-- for AShot-Sollution
+        https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>1.5.4</version>
+        </dependency>
+
+        <!--for Applitools - Solution -->
+
+        <!-- This is the Applitools Images Java SDK -->
+        <dependency>
+            <groupId>com.applitools</groupId>
+            <artifactId>eyes-images-java3</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
 
