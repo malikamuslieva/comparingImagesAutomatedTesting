@@ -37,7 +37,7 @@ public class BaseTestClass {
         acceptCookies.click();
     }
 
-    @AfterSuite(enabled = false)
+    @AfterSuite(alwaysRun = true)
     public void closeBrowser(){
         driver.close();
     }

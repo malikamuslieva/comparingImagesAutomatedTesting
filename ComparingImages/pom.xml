@@ -73,7 +73,23 @@
             <version>RELEASE</version>
         </dependency>
 
+        <!-- Sikuli Solution
+  https://mvnrepository.com/artifact/com.sikulix/sikulixapi-->
 
+        <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+
+        <!--sikuli dependency keeps giving runtime exception - possible sollution is adding the following dependency -->
+
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-handler -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>4.1.69.Final</version>
+        </dependency>
 
     </dependencies>
 

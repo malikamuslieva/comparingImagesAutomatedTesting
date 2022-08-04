@@ -15,7 +15,7 @@ public class DriverFactory {
 
     public static WebDriver getChromeDriver() {
         if (driver == null) {
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\SelfStudy\\WebDrivers\\chromedriver.exe");
             driver = new ChromeDriver();
 
         }
