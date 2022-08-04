@@ -15,19 +15,10 @@ import static tasks.firstResearchTask.DriverFactory.getChromeDriver;
 // validating images using AShot
 public class HomePageAShot {
 
-    /*
-         public method (File masterImage, URL urlString, WebElement imageToScreenshot)
-         {
-         alle parameter mit if-else übeprüfen
-         hier andere (private) Methoden aufrufen
-         }
-     */
-
     private WebDriver driver = getChromeDriver();
     private JavascriptExecutor js = (JavascriptExecutor) driver;
 
     private By picture = By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]");
-
 
     private File takeScreenshotAndReturnAsAFile() {
 
@@ -64,11 +55,13 @@ public class HomePageAShot {
         File srcImageFile = takeScreenshotAndReturnAsAFile();
         BufferedImage actualImage = ImageIO.read(srcImageFile);
 
-        // compare those two images
+        // compare those two images by using the ImageDiffer class
         ImageDiffer imgDiff = new ImageDiffer();
+
+        // create an ImageDiff(erence) object to store the difference
         ImageDiff diff = imgDiff.makeDiff(expectedImage, actualImage);
 
-        // if those images have a difference
+        // if those images have a difference, diff.hasDiff will return true
         if (diff.hasDiff()) {
             return false;
         } else {

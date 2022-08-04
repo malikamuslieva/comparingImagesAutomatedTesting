@@ -17,10 +17,10 @@ public class AllgemeineInformation
     {
         /*
 
-        folgende Fragen noch offen
-        macht es einen Unterschied, wenn ich verschiedene Browser verwende? oder wenn ich verschiedene OS habe?
-        macht es einen Unterschied, wenn die Auflösung der verglichenen Bilder unterschiedlich ist?
-        macht es einen Unterschied, wenn ich ein Manuell erstellten Screenshot, mit dem automatisch erstellten vergleiche? - eventuell ausprobieren
+        folgende Fragen noch offen: macht es einen Unterschied, wenn
+        - ich verschiedene Browser verwende? oder wenn ich verschiedene OS habe?
+        - die Auflösung der verglichenen Bilder unterschiedlich ist?
+        - ich ein Manuell erstellten Screenshot, mit dem automatisch erstellten vergleiche? - eventuell ausprobieren
 
          */
     }
