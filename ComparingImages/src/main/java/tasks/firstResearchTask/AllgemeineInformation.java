@@ -16,16 +16,6 @@ public class AllgemeineInformation
     public static void main( String[] args )
     {
         /*
-        to-do:
-
-        - methode mit parametern
-
-         public method (File masterImage, URL urlString, WebElement imageToScreenshot)
-         {
-         alle parameter mit if-else übeprüfen
-         hier andere (private) Methoden aufrufen
-         }
-
 
         folgende Fragen noch offen
         macht es einen Unterschied, wenn ich verschiedene Browser verwende? oder wenn ich verschiedene OS habe?

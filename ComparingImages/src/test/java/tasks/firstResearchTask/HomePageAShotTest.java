@@ -14,7 +14,6 @@ public class HomePageAShotTest extends BaseTestClass {
     @Test
     public void screenshotImageAndValidateItUsingAShot() {
         try {
-            Assert.assertNotNull(homePage.captureScreenshotOfImage());
             Assert.assertTrue(homePage.validatingCapturedScreenshotUsingAShot());
         } catch (IOException ex) {
             ex.printStackTrace();
