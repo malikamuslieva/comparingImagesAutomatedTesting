@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import static tasks.firstResearchTask.DriverFactory.getChromeDriver;
 
-// validating images using AShot, Applitools and Sikuli (Sikuli ist noch offen)
+// validating images using AShot, Applitools and Sikuli
 public class HomePage {
 
 
@@ -50,12 +50,13 @@ public class HomePage {
         return this;
     }
 
+
     public Boolean validatingCapturedScreenshotUsingAShot() throws IOException {
 
         // read the expected image and save in the BufferedImage object
         BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
 
-        // to make the test replace the image magazinSecondScreenshot.png
+        // to make the test fail replace the image magazinSecondScreenshot.png
 
         // now take screenshot of the current Image
         File srcImageFile = magazinImageFile();
@@ -74,6 +75,7 @@ public class HomePage {
     }
 
     public Boolean validatingCapturedScreenshotUsingApplitools() {
+        // if-else statement missing: if eyes.check(true) then true else false
 
         eyes.setHostOS("Windows 11");
         //eyes.setHostApp("HomePageTest");
@@ -91,13 +93,29 @@ public class HomePage {
             eyes.check("Image buffer", Target.image(expectedImage));
 
             eyes.close();
+            return true;
 
         } catch (IOException ex) {
             ex.printStackTrace();
-        } finally {
-            // If the test was aborted before eyes.close was called, ends the test as aborted
-            eyes.abortIfNotClosed();
+            return false;
         }
+
+    }
+
+    public Boolean validatingCapturedScreenshotUsingSikuli() {
+        // if-else statement missing
+
+/*
+        sollte so einfach sein, wie unten beschrieben:
+
+        Screen screen = new Screen();
+        //set a timeout for waiting for the image
+        screen.setAutoWaitTimeout(30000); //default is 10 seconds
+        //wait for an image to get displayed on the screen and then click on it
+        screen.wait(new Pattern("img/image.PNG")).click();
+        //wait for an image with exact match
+        screen.wait(new Pattern("img/image.PNG").exact()).click();*/
+
 
         return true;
     }
