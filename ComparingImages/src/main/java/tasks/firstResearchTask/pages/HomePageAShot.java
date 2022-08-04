@@ -17,7 +17,6 @@ public class HomePageAShot {
 
     private WebDriver driver = getChromeDriver();
     private JavascriptExecutor js = (JavascriptExecutor) driver;
-
     private By picture = By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]");
 
     private File takeScreenshotAndReturnAsAFile() {

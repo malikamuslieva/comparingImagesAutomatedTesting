@@ -20,7 +20,6 @@ public class HomePageAShotRefactored {
     private JavascriptExecutor js = (JavascriptExecutor) driver;
     private By picture = By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]");
 
-
     // locate the WebElement to capture a screenshot of
     public WebElement locateTheElementToScreenshot() {
         WebElement elementToCapture = driver.findElement(picture);
@@ -40,6 +39,7 @@ public class HomePageAShotRefactored {
     }
 
     // return the url string
+    // warum soll URL als einer der Parameter eingegeben werden? - Ich brauche es ja bereits für die Methode die mein WebElement liefert
     public URL getHomePageURL() {
         URL homePage = null;
         try {
@@ -49,11 +49,10 @@ public class HomePageAShotRefactored {
         }
         return homePage;
     }
+    /*
+     // take 3 parameters from above methods and compare the images
+    public Boolean validatingCapturedScreenshotUsingAShot(BufferedImage masterImage, WebElement elementToCapture) throws IOException {
 
-    // take 3 parameters from above methods and compare the images
-    public Boolean validatingCapturedScreenshotUsingAShot(BufferedImage masterImage, URL urlString, WebElement elementToCapture) throws IOException {
-
-        //driver.get(String.valueOf(urlString));
         // scroll the WebElement into view, save it as img file and convert to bufferedImg
         js.executeScript("arguments[0].scrollIntoView();", elementToCapture);
         File screenshotOfTheElementFile = elementToCapture.getScreenshotAs(OutputType.FILE);
@@ -70,4 +69,25 @@ public class HomePageAShotRefactored {
             return true;
         }
     }
+
+
+     */
+
+    // take 3 parameters from above methods and compare the images
+    public Boolean validatingCapturedScreenshotUsingAShot(BufferedImage masterImage, WebElement elementToCapture) throws IOException {
+
+        js.executeScript("arguments[0].scrollIntoView();", elementToCapture);
+        File screenshotOfTheElementFile = elementToCapture.getScreenshotAs(OutputType.FILE);
+        BufferedImage screenshotOfTheElement = ImageIO.read(screenshotOfTheElementFile);
+
+        ImageDiffer imgDiff = new ImageDiffer();
+        ImageDiff diff = imgDiff.makeDiff(masterImage, screenshotOfTheElement);
+
+        if (diff.hasDiff()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

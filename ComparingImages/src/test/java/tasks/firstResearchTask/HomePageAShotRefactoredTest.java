@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+// damit das funktioniert, muss ich die validatingCapturedScreenshotUsingAShot auskommentierte Methode verwenden
 public class HomePageAShotRefactoredTest extends BaseTestClass{
 
     private HomePageAShotRefactored AShotRefactored = new HomePageAShotRefactored();
@@ -21,10 +22,9 @@ public class HomePageAShotRefactoredTest extends BaseTestClass{
 
         try {
             masterImage=AShotRefactored.getTheMasterImage();
-            urlString = AShotRefactored.getHomePageURL();
             elementToCapture = AShotRefactored.locateTheElementToScreenshot();
 
-            Assert.assertTrue(AShotRefactored.validatingCapturedScreenshotUsingAShot(masterImage, urlString, elementToCapture));
+            Assert.assertTrue(AShotRefactored.validatingCapturedScreenshotUsingAShot(masterImage, elementToCapture));
         } catch (IOException e) {
             e.printStackTrace();
         }
