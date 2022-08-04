@@ -2,13 +2,14 @@ package tasks.firstResearchTask;
 
 import org.junit.Assert;
 import org.testng.annotations.Test;
-import tasks.firstResearchTask.pages.HomePage;
+import tasks.firstResearchTask.pages.HomePageAShot;
 
 import java.io.IOException;
 
-public class HomePageTest extends BaseTestClass {
+public class HomePageAShotTest extends BaseTestClass {
 
-    private HomePage homePage = new HomePage();
+    private HomePageAShot homePage = new HomePageAShot();
+
 
     @Test
     public void screenshotImageAndValidateItUsingAShot() {
@@ -22,17 +23,5 @@ public class HomePageTest extends BaseTestClass {
         homePage.captureScreenshotOfImage()
                 .validatingCapturedScreenshot();
 */
-    }
-
-    @Test
-    public void screenshotImageAndValidateItUsingApplitools() {
-
-        try {
-            Assert.assertNotNull(homePage.captureScreenshotOfImage());
-            Assert.assertTrue(homePage.validatingCapturedScreenshotUsingApplitools());
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 }
