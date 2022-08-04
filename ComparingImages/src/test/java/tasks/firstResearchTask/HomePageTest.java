@@ -18,7 +18,6 @@ public class HomePageTest extends BaseTestClass {
 
     private HomePage homePage = new HomePage();
     private String APIKeyForApplitools = "SRzr54R78ihRyHhZI99sV70kfOdk7wtddTdCYqVU3Aec110";
-    private JavascriptExecutor js;
 
     @Test
     public void screenshotImageAndValidateItUsingAShot() {
@@ -36,6 +35,8 @@ public class HomePageTest extends BaseTestClass {
 
     @Test
     public void screenshotImageAndValidateItUsingApplitools() {
+        // refactor - move to setUp to BeforeTest Method just fo this test
+        // move required code to the HomePage Class, just like in the case above
         Eyes eyes = new Eyes();
 
         eyes.setHostOS("Windows 11");
@@ -47,18 +48,13 @@ public class HomePageTest extends BaseTestClass {
             // the name of the class my test is in, the name of the test method, and size I want the screenshot to have
             eyes.open("HomePageTest", "screenshotImageAndValidateItUsingApplitools", new RectangleSize(800, 600));
 
-            // get the saved image-file - bis her funktioniert es
+            // get the saved image-file
             BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
 
-            js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]")));
-
-            // vielleicht scroll into view? or scan the entire page by scrolling through?
-            // eventuell eyes.checkElement()
             // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
             // https://applitools.com/docs/api-ref/sdk-api/selenium/java/eyes/#check-method
 
-
+            // no scrollingIntoView required :)
             eyes.check("Image buffer", Target.image(expectedImage));
 
             // end the visual UI testing
