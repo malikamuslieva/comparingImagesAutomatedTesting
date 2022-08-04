@@ -21,9 +21,6 @@ public class HomePage {
 
     private By picture = By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]");
 
-    // refactor by adding the following method: public HomePage locateAnImage(){}
-
-
     public File magazinImageFile() {
         // scroll the image I want to capture a Screenshot of  into view
         WebElement pictureToValidate = driver.findElement(picture);
