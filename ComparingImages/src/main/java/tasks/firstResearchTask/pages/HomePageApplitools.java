@@ -37,7 +37,7 @@ public class HomePageApplitools {
         eyes.open("HomePageApplitools", "validatingCapturedScreenshotUsingApplitools", new RectangleSize(800, 600));
         BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
 
-        // no scrollingIntoView required - to make the test replace the image magazinSecondScreenshot.png
+        // no scrollingIntoView required - to make the test replace the image magazinWrongImage.png
 
         Boolean result = eyes.check("Image buffer", Target.image(expectedImage));
 

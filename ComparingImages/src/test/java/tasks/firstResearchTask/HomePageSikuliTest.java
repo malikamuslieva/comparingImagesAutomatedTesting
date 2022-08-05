@@ -9,10 +9,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class HomePageSikuliTest extends BaseTestClass {
-
+    // only absolute paths work -dont know why
     private HomePageSikuli homePageSikuli = new HomePageSikuli();
     private Path masterImagePath = Paths.get("C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\ResearchTasks\\FirstTask\\ComparingImages\\screenshots\\magazin.png");
-    private Path wrongImage = Paths.get("C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\ResearchTasks\\FirstTask\\ComparingImages\\screenshots\\magazinSecondScreenshot.png");
+    private Path wrongImage = Paths.get("C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\ResearchTasks\\FirstTask\\ComparingImages\\screenshots\\magazinWrongImage.png");
 
     @Test
     public void screenshotImageAndValidateItUsingSikuli() throws IOException {

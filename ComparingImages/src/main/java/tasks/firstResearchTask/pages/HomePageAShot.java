@@ -48,7 +48,7 @@ public class HomePageAShot {
         // read the expected image and save in the BufferedImage object
         BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
 
-        // to make the test fail replace the image magazinSecondScreenshot.png
+        // to make the test fail replace the image magazinWrongImage.png
 
         // now take screenshot of the current Image
         File srcImageFile = takeScreenshotAndReturnAsAFile();
