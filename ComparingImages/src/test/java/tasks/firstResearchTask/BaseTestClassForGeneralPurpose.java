@@ -1,6 +1,5 @@
 package tasks.firstResearchTask;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,31 +14,25 @@ import java.time.Duration;
 import static tasks.firstResearchTask.DriverFactory.getChromeDriver;
 import static tasks.firstResearchTask.DriverFactory.getWebDriverWait;
 
-public class BaseTestClass {
-
+public class BaseTestClassForGeneralPurpose {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    private By acceptCookiesButton = By.cssSelector(".cc-button.cc-button--contrast.cc-banner__button.cc-banner__button-accept");
+    public By acceptCookiesButton = By.cssSelector(".cc-button.cc-button--contrast.cc-banner__button.cc-banner__button-accept");
+
+/*    private WebElement rightElementToCapture;
+    private WebElement wrongElementToCapture;
+    private By rightElement = By.xpath("//body[1]/div[2]/section[1]/div[1]/ul[1]/li[5]/div[1]/a[1]/picture[1]/img[1]");
+    private By wrongElement =By.id("q");*/
 
     @BeforeSuite
-    public void startUpBrowser(){
+    public void startUpBrowser() {
         driver = getChromeDriver();
         driver.manage().window().maximize();
         wait = getWebDriverWait();
     }
 
-    // für jede Methode wird somit die Homepage aufgemacht
-    @BeforeMethod
-    public void goToHomePage(){
-
-        driver.get("https://www.nature.com/");
-        //driver.manage().deleteAllCookies();  - warum funktioniert das nicht?
-        WebElement acceptCookies = new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(driver.findElement(acceptCookiesButton)));
-        acceptCookies.click();
-    }
-
     @AfterSuite(alwaysRun = true)
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.close();
     }
 }

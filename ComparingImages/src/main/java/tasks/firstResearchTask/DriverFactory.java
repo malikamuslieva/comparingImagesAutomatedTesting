@@ -1,6 +1,5 @@
 package tasks.firstResearchTask;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,9 +14,9 @@ public class DriverFactory {
 
     public static WebDriver getChromeDriver() {
         if (driver == null) {
+
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\SelfStudy\\WebDrivers\\chromedriver.exe");
             driver = new ChromeDriver();
-
         }
         return driver;
     }

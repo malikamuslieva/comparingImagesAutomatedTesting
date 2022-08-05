@@ -1,4 +1,4 @@
-package tasks.firstResearchTask.pages;
+package tasks.firstResearchTask.pages.sikuli;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -29,7 +29,7 @@ public class HomePageSikuli {
         WebElement pictureToValidate = driver.findElement(picture);
         js.executeScript("arguments[0].scrollIntoView();", pictureToValidate);
         File srcImageFile = pictureToValidate.getScreenshotAs(OutputType.FILE);
-        File copiedImageFile = new File(".\\screenshots\\magazin.png");
+        File copiedImageFile = new File(".\\screenshots\\masterImage.png");
 
         try {
             FileUtils.copyFile(srcImageFile, copiedImageFile);
@@ -44,20 +44,25 @@ public class HomePageSikuli {
         Boolean result = null;
         Pattern masterImagePattern = new Pattern(String.valueOf(masterImagePath));
 
+        // redundant but removing causes failure of the test
         File screenshotOfTheElement = takeScreenshotAndReturnAsAFileSikuli();
         BufferedImage bufferedImageOfScreenshot = ImageIO.read(screenshotOfTheElement);
+        Pattern screenshotPattern = new Pattern(bufferedImageOfScreenshot);
 
-        Screen screen = new Screen();
+/*        Screen screen = new Screen();
         screen.setAutoWaitTimeout(10000);
-
         Finder finder = new Finder(screen.capture().getImage());
-        finder.find(masterImagePattern);
+        */
+
+        Finder finder = new Finder(masterImagePattern.getImage());
+        finder.find(screenshotPattern);
 
         if (finder.hasNext()) {
             //Match match = finder.next();
             finder.next();
             // per definition, an iterator can be stepped through only once - it is empty afterwards - it has to be destroyed using finder.destroy()
             result = true;
+
             finder.destroy();
         } else {
             System.out.println("No match found");

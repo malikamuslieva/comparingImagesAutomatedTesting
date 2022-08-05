@@ -49,14 +49,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager &ndash;&gt;
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.2.2</version>
-        </dependency>
+        </dependency>-->
 
-        <!-- for AShot-Sollution
+        <!-- for AShot-Solution
         https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>

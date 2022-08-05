@@ -1,4 +1,4 @@
-package tasks.firstResearchTask.pages;
+package tasks.firstResearchTask.pages.applitools;
 
 import com.applitools.eyes.RectangleSize;
 import com.applitools.eyes.images.Eyes;
@@ -35,9 +35,9 @@ public class HomePageApplitools {
         //eyes.open("HomePageTest", "screenshotImageAndValidateItUsingApplitools", new RectangleSize(800, 600));
 
         eyes.open("HomePageApplitools", "validatingCapturedScreenshotUsingApplitools", new RectangleSize(800, 600));
-        BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
+        BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\masterImage.png"));
 
-        // no scrollingIntoView required - to make the test replace the image magazinWrongImage.png
+        // no scrollingIntoView required - to make the test replace the image wrongMasterImage.png
 
         Boolean result = eyes.check("Image buffer", Target.image(expectedImage));
 

@@ -1,8 +1,9 @@
-package tasks.firstResearchTask;
+package tasks.firstResearchTask.ashot;
 
 import org.junit.Assert;
 import org.testng.annotations.Test;
-import tasks.firstResearchTask.pages.HomePageAShot;
+import tasks.firstResearchTask.BaseTestClass;
+import tasks.firstResearchTask.pages.aShot.HomePageAShot;
 
 import java.io.IOException;
 

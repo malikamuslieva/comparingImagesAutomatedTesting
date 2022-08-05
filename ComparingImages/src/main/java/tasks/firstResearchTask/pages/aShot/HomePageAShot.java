@@ -1,4 +1,4 @@
-package tasks.firstResearchTask.pages;
+package tasks.firstResearchTask.pages.aShot;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -31,7 +31,7 @@ public class HomePageAShot {
         File srcImageFile = pictureToValidate.getScreenshotAs(OutputType.FILE);
 
         // create a location to copy the screenshot to
-        File copiedImageFile = new File(".\\screenshots\\magazin.png");
+        File copiedImageFile = new File(".\\screenshots\\masterImage.png");
 
         //copy the screenshot to my copiedImageFile location
         try {
@@ -46,9 +46,9 @@ public class HomePageAShot {
     public Boolean validatingCapturedScreenshotUsingAShot() throws IOException {
 
         // read the expected image and save in the BufferedImage object
-        BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\magazin.png"));
+        BufferedImage expectedImage = ImageIO.read(new File(".\\screenshots\\masterImage.png"));
 
-        // to make the test fail replace the image magazinWrongImage.png
+        // to make the test fail replace the image wrongMasterImage.png
 
         // now take screenshot of the current Image
         File srcImageFile = takeScreenshotAndReturnAsAFile();
