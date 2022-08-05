@@ -1,4 +1,4 @@
-package researchtasks.taskone;
+package tasks.firstResearchTask.pages;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -12,11 +12,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static tasks.firstResearchTask.DriverFactory.getChromeDriver;
 
-//Validating Images using Sikuli
+//Validating Images using Sikuli - some dependency issues occur
 public class HomePageSikuli {
 
     private WebDriver driver = getChromeDriver();
@@ -25,19 +24,11 @@ public class HomePageSikuli {
 
     private File takeScreenshotAndReturnAsAFileSikuli() {
 
-        // Locate the WebElement I want to take a screenshot of
         WebElement pictureToValidate = driver.findElement(picture);
-
-        // scroll the WebElement into view
         js.executeScript("arguments[0].scrollIntoView();", pictureToValidate);
-
-        // take a screenshot of the WebElement and save it as the img file
         File srcImageFile = pictureToValidate.getScreenshotAs(OutputType.FILE);
-
-        // create a location to copy the screenshot to
         File copiedImageFile = new File(".\\screenshots\\magazin.png");
 
-        //copy the screenshot to my copiedImageFile location
         try {
             FileUtils.copyFile(srcImageFile, copiedImageFile);
         } catch (IOException e) {
@@ -46,46 +37,33 @@ public class HomePageSikuli {
         return copiedImageFile;
     }
 
-    public Boolean validatingCapturedScreenshotUsingSikuli(Path masterImagePath) {
-        try {
-            Boolean result;
-            Pattern masterImagePattern = new Pattern(String.valueOf(masterImagePath));
+    public Boolean validatingCapturedScreenshotUsingSikuli(Path masterImagePath) throws IOException {
 
-            File screenshotOfTheElement = takeScreenshotAndReturnAsAFileSikuli();
-            BufferedImage bufferedImageOfScreenshot = ImageIO.read(screenshotOfTheElement);
-            //Pattern screenshotPattern = new Pattern(bufferedImageOfScreenshot);
+        Boolean result = null;
+        Pattern masterImagePattern = new Pattern(String.valueOf(masterImagePath));
 
-            Screen screen = new Screen();
-            //set a timeout for waiting for the image
-            screen.setAutoWaitTimeout(10000);
+        File screenshotOfTheElement = takeScreenshotAndReturnAsAFileSikuli();
+        BufferedImage bufferedImageOfScreenshot = ImageIO.read(screenshotOfTheElement);
 
-            Finder finder = new Finder(screen.capture().getImage());
-            finder.find(masterImagePattern);
+        Screen screen = new Screen();
+        screen.setAutoWaitTimeout(10000);
 
-            if (finder.hasNext()) {
-                Match match = finder.next();
-                // per definition, an iterator can be stepped through only once - it is empty afterwards
-                //it has to be destroyed using finder.destroy(), especially when used with for: or while:
-                //when used in a with: construct, it is destroyed automatically
-                finder.destroy();
-                result = true;
-            } else {
-                System.out.println("No match found");
-                result = false;
-            }
+        Finder finder = new Finder(screen.capture().getImage());
+        finder.find(masterImagePattern);
 
-            return result;
-            //wait for an image to get displayed on the screen and then click on it - screen.wait(masterImagePattern).click();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (finder.hasNext()) {
+            //Match match = finder.next();
+            finder.next();
+            // per definition, an iterator can be stepped through only once - it is empty afterwards - it has to be destroyed using finder.destroy()
+            result = true;
+            finder.destroy();
+        } else {
+            System.out.println("No match found");
+            result = false;
         }
-        return null;
-    }
 
-    public static void main(String[] args) {
-        HomePageSikuli homePageSikuli = new HomePageSikuli();
-        Path masterImagePath = Paths.get("C:\\Users\\malika.muslieva\\OneDrive - Accenture\\Desktop\\TestAutomation\\ResearchTasks\\FirstTask\\ComparingImages\\screenshots\\magazin.png");
-        homePageSikuli.validatingCapturedScreenshotUsingSikuli(masterImagePath);
+        return result;
+
     }
 
 }
