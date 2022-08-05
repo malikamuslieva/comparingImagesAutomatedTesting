@@ -21,7 +21,7 @@ public class HomePageAShotRefactoredTest extends BaseTestClass{
     public void screenshotImageAndValidateItUsingAShotRefactored(){
 
         try {
-            masterImage=AShotRefactored.getTheMasterImage();
+            masterImage=AShotRefactored.getMasterImage();
             elementToCapture = AShotRefactored.locateTheElementToScreenshot();
 
             Assert.assertTrue(AShotRefactored.validatingCapturedScreenshotUsingAShot(masterImage, elementToCapture));

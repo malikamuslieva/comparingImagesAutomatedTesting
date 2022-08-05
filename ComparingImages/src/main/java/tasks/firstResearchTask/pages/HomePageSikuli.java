@@ -15,7 +15,9 @@ import java.nio.file.Path;
 
 import static tasks.firstResearchTask.DriverFactory.getChromeDriver;
 
-//Validating Images using Sikuli - some dependency issues occur
+//Validating Images using Sikuli - some dependency issues occur - konnte durch hinzufügen einer Abhängigkeit behoben werden
+// java.net.SocketException: Connection reset - if I remove redundant code - why?
+
 public class HomePageSikuli {
 
     private WebDriver driver = getChromeDriver();

@@ -27,7 +27,7 @@ public class HomePageAShotRefactored {
     }
 
     // load the masterImage into a BufferedImage object and return it
-    public BufferedImage getTheMasterImage() {
+    public BufferedImage getMasterImage() {
 
         BufferedImage expectedImage = null;
         try {
@@ -38,8 +38,7 @@ public class HomePageAShotRefactored {
         return expectedImage;
     }
 
-    // return the url string
-    // warum soll URL als einer der Parameter eingegeben werden? - Ich brauche es ja bereits für die Methode die mein WebElement liefert
+    // return the url string - warum soll URL als einer der Parameter eingegeben werden? - Ich brauche es ja bereits für die Methode die mein WebElement liefert
     public URL getHomePageURL() {
         URL homePage = null;
         try {
@@ -73,7 +72,7 @@ public class HomePageAShotRefactored {
 
      */
 
-    // take 3 parameters from above methods and compare the images
+    // take parameters from above methods and compare the images
     public Boolean validatingCapturedScreenshotUsingAShot(BufferedImage masterImage, WebElement elementToCapture) throws IOException {
 
         js.executeScript("arguments[0].scrollIntoView();", elementToCapture);
@@ -89,5 +88,4 @@ public class HomePageAShotRefactored {
             return true;
         }
     }
-
 }
