@@ -34,12 +34,7 @@ public class ComparingScreenshotAndMasterImageAshot {
         String todayFormatted = formatter.format(Date.valueOf(today));
 
         Boolean result = null;
-
-        try {
-            expectedImage = ImageIO.read(masterImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        expectedImage = ImageIO.read(masterImage);
 
         // locating the element und capturing a screenshot
         js.executeScript("arguments[0].scrollIntoView();", elementToCapture);
@@ -48,11 +43,7 @@ public class ComparingScreenshotAndMasterImageAshot {
 
         // saving the screenshot
         File copiedImageFile = new File(".\\screenshots\\testResults\\actualImage" + todayFormatted + ".png");
-        try {
-            FileUtils.copyFile(actualImageScreenshotFile, copiedImageFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.copyFile(actualImageScreenshotFile, copiedImageFile);
 
         ImageDiffer imgDiff = new ImageDiffer();
         ImageDiff diff = imgDiff.makeDiff(expectedImage, actualImageScreenshot);
